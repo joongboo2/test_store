@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>JS: 연산자</title>
+</head>
+<body>
+    <h1>연산자, 피연산자, 연산식이란?</h1>
+    <h1>산술연산자</h1>
+    <script>
+        // var x = 10 ;
+        //var x = "10" ;
+        var x = "10a"  
+        var y = 4
+        // ("x + y:" + (x + y));
+        //alert("x + y:" + (x + y));
+        //console.log("x + y:" + (x + y));
+        document.write("<strong>x + y:" + (x + y) + "<strong>"+ "<br>");
+        document.write("<strong>x - y:" + (x - y) + "<strong>"+ "<br>");
+        document.write("<strong>x - y:" + (x * y) + "<strong>"+ "<br>");
+        document.write("<strong>x / y:" + (x / y) + "<strong>"+ "<br>");
+        document.write("<strong>x % y:" + (x % y) + "<strong>"+ "<br>");
+              
+    </script>
+
+    <h1>대입연산자</h1>
+    <script>
+        var x = 10, y = 20; var z = 30 ;
+        var x1 = z ;
+        var x2 = x == y ;
+
+        x = x - 5 ; x -= 5; 
+
+        y = y + 2 ; y += 2 ;
+
+        y = y * 2 ; y *= 2;
+
+        y = y / 2 ; y /= 2;
+
+        y = y % 2; y %= 2 ;
+
+    </script>
+
+    <h1>증감연산자(++,--, 일항연산자:연산자에 대한 피연산자가 1개)</h1>
+
+    <script>
+        var x1 = y1 = x2 = y2 = 10 ;
+
+        var result1, result2, result3, result4 ;
+
+        result1 = ++x1 + 3;
+        result2 = x2++ + 3;
+
+        document.write("x1:" + x1 + "<br>"); // 11
+        document.write("x2:" + x2 + "<br>"); // 11
+        document.write("result1:" + result1 + "<br>"); // 14
+        document.write("result2:" + result2 + "<br>"); // 13
+
+        result3 = --y1 + 3;
+        result4 = y2-- + 3;
+
+        document.write("x1:" + x1 + "<br>"); // 11
+        document.write("x2:" + x2 + "<br>"); // 11
+        document.write("result3:" + result3 + "<br>"); // 12
+        document.write("result4:" + result4 + "<br>"); // 13
+
+        var x11 = 10;
+        var y11 = 10;
+
+        y = x11-- +5 + --x11 ;
+        document.write("x11:" + x11 + "<br>"); // 8
+        document.write("y:" + y + "<br>"); // 23
+
+        y = --y11 +5 + y11-- ;
+        document.write("y11:" + y11 + "<br>"); // 8
+        document.write("y:" + y + "<br>"); // 23
+
+    </script>
+
+    <h1>비교연산자(==, >=, >, &lt;=, !==)와 논리연산자(&&, ||, !)</h1>
+    <script>
+
+        document.write("3" > 11);document.write("<br>");//false
+        document.write("3" < 11);document.write("<br>");//true
+        document.write("=============================<br>");
+
+        document.write(3 > "a");document.write("<br>");//false
+        document.write(3 < "a");document.write("<br>");//false
+        document.write("=============================<br>");
+
+        document.write("3" > "12");document.write("<br>");//true
+        document.write("3" < "12");document.write("<br>");//false
+        document.write("=============================<br>");
+
+
+        document.write("홍길동" < "홍길순");document.write("<br>");//false
+        document.write("=============================<br>");
+
+        var x21 = 3 ; var y21 = 45 ;
+
+        document.write((x21 + 6 > y21 ) + "<br>"); //false
+        document.write( x21 + 6 > y21  + "<br>"); //비교를 못해서 false가 표시됨
+        document.write( x21 + 6 < y21  + "<br>"); //비교를 못해서 false가 표시됨
+        document.write("=============================<br>");
+
+    </script>
+    <hr>
+    <script>
+        document.write((3 > 4 && 5 < 2) + "<br>"); 
+        document.write((3 < 4 && 5 > 2) + "<br>");
+        document.write((3 > 4 && 5 < 2) + "<br><br>"); 
+        document.write((3 < 4 || 5 > 2) + "<br>");
+        document.write((3 > 4 || 5 < 2) + "<br>"); 
+        document.write((3 < 4 || 5 > 2) + "<br><br>");
+
+        document.write("=============================<br>");
+        var myStr1 = "" ;   //false
+        var myStr2 = null ; //false
+        var myStr3 ;        //false
+        var myInt1 = 0 ;    //false
+        var myInt2 = -45    // true
+
+        //if 문은 다음 단원에서 설명합니다.
+        if (!myInt2) {
+        //if (!myStr2) {
+        //if (!myStr3) {
+            document.write("if문의 조건이 참으로 평가됩니다");
+        } else {
+            document.write("if문의 조건이 거짓으로 평가됩니다");
+        }
+    </script>
+
+
+
+    
+</body>
+</html>

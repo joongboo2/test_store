@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>함수</title>
+</head>
+<body>
+<h1>JS 함수 개요</h1>
+
+<!-- 
+   html 페이지가 웹브라우저에 처음 로딩되어 표시될 때 실행되는 것이 아니라,
+   html 페이지가 표시된 후에, 사용자가 일으키는 동작(이벤트)이 발생되었을 때,
+   JS 실행문들이 실행되길 원하면, 실행문들을 function 의 실행블록{  }에 기술해서
+   JS 함수를 정의(생성)합니다.
+
+   학습내용
+    1. 함수를 정의하는 방법
+       함수 정의를 위해 알고 있어야 하는 용어
+       - 매개변수(Parameter): 함수 실행 시에 함수에 값을 전달하고 싶을 때
+       - 인자(Argument)
+       - 반환(return): 함수의 실행 블록 안에 {} return 반환값 ;
+                       실행문을 이용하여 함수 실행 시에 반환되는 값을 
+                       지정할 수 있습니다
+
+       - 함수의 유형에 따라, 4가지 함수 정의 방법이 있습니다.
+         1) 매개변수가 없고, 반환되는 것도 없는 유형
+         2) 매개변수가 있고, 반환되는 것이 없는 유형
+         3) 매개변수가 없고, 반환되는 것이 있는 유형
+         4) 매개변수가 있고, 반환되는 것도 있는 유형
+
+
+
+    2. 함수를 실행하는 방법
+ -->
+    <!-- <button type="button" onmouseover="myAlert";">눌러보세요.</button> -->
+    <hr>
+<script>
+    //문제: 버튼 클릭 시마다 "필요할 때마다 실행됩니다." 메시지가 경고창에
+    //      표시되는 함수를 작성하시오.
+
+    function myAlert() {
+        alert("필요할 때마다 실행됩니다.") ;
+    }
+
+    // myAlert() ;
+</script>
+
+<h1>매개변수(Parameter), 인수(Argument), 반환 개념</h1>
+
+<input type="number" id="inputNum1" name="inputNum1">&nbsp;
+<input type="number" id="inputNum2" name="inputNum2">&nbsp;<br><br>
+
+<button type="button" onclick="myAdd();">눌러보세요1(매개변수가 없음).</button><br><br>
+<button type="button" onclick="yourAdd(7, 8);">눌러보세요2(매개변수가 있음).</button><br><br>
+<button type="button" onclick="hisAdd();">눌러보세요3</button><br><br>
+<button type="button" onclick="herAdd();">눌러보세요4</button><br><br>
+<!-- "눌러보세요2" 버튼을 클릭하면, yourAdd(3, 5); 실행문이 실행됩니다. 
+     실행문에서 3은 a라는 매개변수에, 5는 b라는 매개변수에 각각 전달되는 인수(Argument)라고 합니다.-->
+<hr>
+
+<script>
+
+function myAdd() {
+    var a = 5 ; var b = 8 ;
+    alert (a + "과 " + b + "의 합: " + (a+b) );
+}
+
+function yourAdd(firstNum1, secondNum2){//firstNum1와 secondNum2 을 매개변수라고 합니다.
+                                        //매개변수는 함수가 실행될 때, 매개변수를 통해서 필요한 값을 전달받습니다.
+                                        //즉, 함수 실행 시에 함수 내부로 필요한 값을 전달하는 변수를 매개변수라고 합니다.
+
+    var myAddResult = firstNum1 + secondNum2 ;
+    alert (firstNum1 + "과 " + secondNum2 + "의 합: " + (myAddResult) );
+
+}
+
+function hisAdd() {
+    //입력란에 입력된 두 수를 더하여 hisAdd()를 통해서 
+    //두 숫자의 합을 alert 창에 표시하도록 프로그래밍 및 구현해보세요 !!!
+/*
+    [프로그래밍]
+    1) 입력란에 입력값을 가져와서 변수에 저장
+    2) 저장된 값을 더해서 alert창에 표시할 수 있도록 입력
+*/
+    //방법1: 권장!!!
+    var num1 = document.getElementById("inputNum1").value ; //숫자로 된 문자열
+    var inputNum2 = document.getElementById("inputNum2") ; //숫자로 된 문자열
+    var num2 = inputNum2.value ;
+
+    //방법2: 
+    var num1 = inputNum1.value ;//HTML 요소의 id 속성을 변수처럼 자바스크립트에서 사용할 수 있네요.
+    var num2 = inputNum2.value ;
+
+    var result = Number(num1) + Number(num1) ;
+
+    alert (num1 + "과 " + num2 + "의 합: " + (result));
+
+}
+
+//함수에서 input값을 사용할때 가져와 사용할때document.getElementById(inputNum1).value로
+//사용하는것과 바로 inputNum1.value 로 사용하는것이 차이가있나요??
+
+//실행시에 숫자 인자값 2개를 각각 매개변수 x와 y를 통해 전달받아서 
+//전달된 수를 더하는 기능만 구현됨
+function addTwoNums(x, y) {
+    
+    alert (x + "과 " + y + "의 합: " + (x+y) );
+}
+
+
+
+function herAdd() {
+
+    var num1 = Number(document.getElementById("inputNum1").value) ;
+    var num2 = Number(document.getElementById("inputNum2").value) ;
+    addTwoNums(3, 4) ;
+    addTwoNums(num1, num2) ;
+
+}
+
+
+//반환(return) 개념
+//함수 실행 후, 특정 값을 함수 외부로 보냅니다.
+</script>
+
+
+<h1>함수 유형</h1>
+<!-- 
+       - 함수의 유형에 따라, 4가지 함수 정의 방법이 있습니다.
+         1) 매개변수가 없고, 반환되는 것도 없는 유형
+         2) 매개변수가 있고, 반환되는 것이 없는 유형
+         3) 매개변수가 없고, 반환되는 것이 있는 유형
+         4) 매개변수가 있고, 반환되는 것도 있는 유형
+
+ -->
+ <p>1. 매개변수와 반환값이 없는 유형</p>
+ <!--   function 함수이름() {
+            실행문들;   //return 반환값; 문장이 없습니다.
+        }
+
+        앞에서 실습으로 작성한 myAdd(), hisAdd() 함수가 이 유형에 해당됩니다.
+ -->
+<hr>
+
+<p>2. 매개변수와 반환값이 있는 유형</p>
+<!-- 
+    function 함수이름(매개변수이름, 매개변수이름,...) {
+           실행문들;
+           return 반환값 ;    //반환값은 변수 또는 계산식 또는 리터럴이 될 수 있습니다.
+       }
+      매개변수의 기능: 실행 시에 필요한 값을 외부로부터 전달받습니다.
+ -->
+
+ <script>
+    function add2Num2(a, b) {
+        var result = a + b ;
+        return result ;
+
+        // return a + b ;
+    }
+
+//return 문은 항상 함수 안에서 기술하여 사용함
+//return 문을 사용하는 두 가지 방법
+//1) return 반환표현식; //함수 실행 시에 명시된 반환표현식의 값(리터럴)을 반환하고, 함수를 종료합니다.
+//2) return ;          //함수를 종료시킴
+//2)번 형태로 사용되는 return문은 if(조건)문의 { } 블록안에서 주로 사용됩니다.
+
+//함수의 실행
+yourAdd(4,6) ; //*******return문이 없는 함수 실행
+console.log(add2Num2(5, 6)) ; //***return문이 있는 함수 실행
+
+var resultAdd2 = yourAdd(4,6) ;  //return문이 없는 함수는 "yourAdd(4,6) ;" 형식으로 사용됨
+var resultAdd3 = add2Num2(5, 6) ;//*****return문이 있는 함수의 올바른 사용법입니다.
+console.log(resultAdd2) ;
+console.log(resultAdd3) ;
+
+ </script>
+
+
+<p>3. 매개변수가 없고 반환값이 있는 유형</p>
+
+
+<button type="button" onclick="herMainAdd();">눌러보세요5</button><br><br>
+
+<script>
+function herAdd2() {
+    var inputNum1 = Number(document.getElementById("inputNum1").value) ;
+    var inputNum2 = Number(document.getElementById("inputNum2").value) ;
+    //input에 입력값이 없는 경우, 위의 코드에서 Number(입력값) 결과는 0으로 표시됩니다.
+
+    //[참고] Number() 대신 parseInt(), parseFloat()를 사용한 경우.
+    //var inputNum1 = parseInt(document.getElementById("inputNum1").value) ; 
+    //var inputNum2 = parseFloat(document.getElementById("inputNum2").value) ;
+    //input에 입력값이 없는 경우, 위의 코드에서 parseInt(입력값) 결과는 NaN으로 표시됩니다.
+    //alert("inputNum1: " + inputNum1) ;
+    //alert("inputNum2: " + inputNum2) ;
+
+    return (inputNum1 + inputNum2)  ;
+    //return (Number(document.getElementById("inputNum1").value) + Number(document.getElementById("inputNum2").value))  ;
+}
+
+function herMainAdd() {
+    var herResult2 = herAdd2() ;
+    console.log("실행결과: " + herResult2) ;
+}
+
+var addResult2 = herAdd2() ;
+document.write("addResult2: " + addResult2) ;
+
+var herMainAddVar = herMainAdd ;
+console.log(herMainAddVar) ;
+console.log(typeof herMainAddVar) ;
+herMainAddVar() ;
+
+document.write(herMainAdd);
+</script>
+
+
+
+<p>4. 매개변수가 있고 반환값이 없는 유형</p>
+<!-- yourAdd(firstNum1, secondNum2) 함수 코드 확인 -->
+</body>
+</html>

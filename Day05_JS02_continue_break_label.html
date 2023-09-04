@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>기타제어문</title>
+</head>
+<body>
+<h1>label문과 break문</h1>
+<!--
+for문, while문에 이름을 지정할 수 있습니다.
+이 지정된 이름을 label 이라고 합니다.
+
+중첩된 for문, 중첩된 while 문
+: for 문 안에 또 다른 for 문이나 while 이 포함될 수 있습니다.
+  while 문 안에 다른 while 문이나 for 문이 포함될 수 있습니다.
+
+중첩된 for문, 중첩된 while 문의 실행블록에 
+   - if 문의 실행블록에 작성된 break;문의 경우,
+     해당 for문이나 while 문의 블록을 종료하고 나갑니다. 
+
+-->
+
+<script>
+    // var j = 100 ;
+
+    // myFor:  //for문에 지정된 라벨
+    // for(var i = 1 ; i <= 100 ; i++){
+    //     document.write(i + "<br>");
+    //     if (j % i == 3) {
+    //         document.write(j + " % " + i + " : " + (j % i)) ;
+    //         break ;
+    //     }
+
+    // }
+
+    document.write("<hr>") ;
+
+    myOutter:  //for문에 지정된 라벨
+               //외부 for문에 label을 지정
+    for(var i = 1 ; i <= 100 ; i++){
+        document.write("외부 for문: " + i + "번째 반복<br>");
+        if (i == 4) {
+            break ;
+        }
+
+        myInner:
+        for(var j = 11 ; j <= 13 ; j++) {
+            if (j == 12) {
+                break myOutter;
+            }
+            document.write("&nbsp;&nbsp;&nbsp;&nbsp;내부 for 문: 외부 " 
+                           + i + "번째 반복의 내부 " + j + "번째 반복입니다.<br>");
+            
+        }
+
+    }
+</script>
+
+<h1>continue문(label도 이용 가능)</h1>
+<!-- 
+    for 문이나 while 문에서  반복 중에, continue;을 만나면
+    해당 반복을 멈추고 다음 반복을 반복을 시작합니다.
+
+ -->
+<script>
+
+document.write("<hr>") ;
+document.write("<hr>") ;
+document.write("<hr>") ;
+
+myOutter:  //for문에 지정된 라벨
+           //외부 for문에 label을 지정
+for(var i = 1 ; i <= 100 ; i++){
+    if (i == 4) {
+        break ;
+    }
+    document.write("외부 for문: " + i + "번째 반복<br>");
+
+    myInner:
+    for(var j = 11 ; j <= 13 ; j++) {
+        if (j == 12) {
+            continue myOutter;
+        }
+        document.write("&nbsp;&nbsp;&nbsp;&nbsp;내부 for 문: 외부 " 
+                       + i + "번째 반복의 내부 " + j + "번째 반복입니다.<br>");
+        
+    }
+
+}
+
+</script>
+
+<h1>conitnue문 연습</h1>
+<!-- 
+for 문을 이용하여 1 ~ 10 범위에서 홀수만 표시되도록 
+프로그래밍 및 구현하시오. 단, continue문을 반드시 사용하시오.
+-->
+<script>
+    for(var i = 1 ; i <= 10 ; i++) {
+        if(i % 2 == 1) {
+            document.write(i + " ") ;
+        }
+        
+    }
+    document.write("<hr>") ;
+    for(var i = 1 ; i <= 10 ; i++) {
+        if(i % 2 == 0) {
+            continue ;
+        }
+        document.write(i + " ") ;
+    }
+</script>
+
+</body>
+</html>

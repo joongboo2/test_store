@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Day02_데이터유형과 변수선언</title>
+</head>
+<body>
+    <h1>자바스트립트 변수의 타입</h1>
+<!--
+- 타입(data type)이란, 프로그램에서 다룰 수 있는 값(리터럴)의 종류를 의미합니다.
+-기본타입
+    1. 숫자(number): 정수(Integer, int), 실수(float)
+    2. 문자열(string): 쌍따옴표나 작은따음표로 감싸줍니다.
+    3. 불리언(boolean): true/false
+    4. undefined: 선언된 변수에 값이 대입되지 않은 상태임
+-객체타입(사용자 정의 객체타입): object
+
+- 값(리터럴)이 저장되는 변수의 타입
+  - 숫자: number
+  - 문자열: string
+  - 논리값(true, false): boolean
+  - 변수에 대입된 값이 없음: undefined
+
+- 자바스크립트는 변수에 값이 대입될 때, 자동으로 값의 타입이 변수에 적용됩니다. 
+  즉, 변수 선언 시에 변수의 타입을 코드로 지정하지  않습니다.
+
+- 자바스트립트에서는 기본타입도 객체로 간주합니다.
+
+- 변수의 선언과 초기화
+    - 변수(variable)란 데이터(data)를 저장할 수 있는 메모리 공간을 의미하며, 
+      대입된 값이 변경될 수 있습니다.
+
+    - 자바스크립트에서는 var 키워드를 사용하여 변수를 선언합니다.
+
+ 
+
+자바스크립트에서는 선언되지 않은 변수를 사용하려고 하거나 접근하려고 하면 
+오류가 발생합니다.
+<script>
+    alert(myAge);
+</script>
+
+-->
+
+
+<!--
+단, 선언되지 않은 변수를 초기화할 경우에는 
+자동으로 선언을 먼저 한 후 초기화를 진행합니다.
+
+<script>
+    myAge = 100 ;
+    alert(myAge) ;
+    //위의 코드는 실행 시에 자바스크립트 엔진에 의해서 아래처럼 실행됩니다.
+    // var myAge ;
+    // myAge = 100 ;
+    // alert(myAge) ;
+
+</script>
+
+-->
+
+
+
+
+
+<!--
+- 자바 스크립트에서 변수의 이름 지정
+  자바스크립트에서 변수는 이름을 가지고 식별하므로, 
+  변수의 이름은 식별자(identifier)입니다.
+
+  변수의 이름은 영문자(대소문자), 숫자, 언더스코어(_) 또는 달러($)로만 구성됩니다.
+  숫자로는 시작할 수 없습니다.
+
+  이러한 변수의 이름은 대소문자를 구분하며, 
+  자바스크립트 언어에서 예약된 키워드는 이름으로 사용할 수 없습니다.
+
+-->
+
+<script>
+//프로그램에서 값을 사용하려면, 변수(값이 저장된 메모리 공간)에 담아서
+//사용해야 되며, 이를 하려면, 변수를 선언해야 합니다.
+//변수 선언 + 값을 대입(변수에 최초의 값을 대입하는 것을 "변수 초기화"라고 합니다.)
+
+var myName ;
+//alert(typeof myName) ;
+console.log(typeof myName) ;
+myName = "홍길동" ;
+//alert(typeof myName) ;
+console.log(typeof myName) ;
+
+var yourName = "이순신" ;
+//alert(typeof yourName) ;
+console.log(typeof yourName) ;
+
+var myNumber = 0 ;
+console.log(typeof myNumber) ;
+myNumber = 0.1 ;
+console.log(typeof myNumber) ;
+
+var myBoolean = true ;
+console.log(typeof myBoolean) ;
+
+myBoolean = false ;
+
+//문자열을 쌍따옴표나 작은따옴표로 감싸줍니다.
+yourName = "슈'퍼'맨" ;
+yourName = '베트"맨", 스파이더맨' ;
+yourName = "베트\"맨\", 스파이더맨" ;
+console.log(yourName) ;
+yourName = "베트\"맨\", 스파\'이\'더맨" ;
+console.log(yourName) ;
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>내장API함수</title>
+</head>
+<body>
+<h1>웹브라우저 내장 API 함수</h1>
+<!-- 
+3. isNaN()
+4. parseFloat()
+5. parseInt()
+12. Number()***
+
+
+8. encodeURI()*****
+9. encodeURIComponent()**
+6. decodeURI()*****
+7. decodeURIComponent()**
+
+13. String(인수값) ********* //인수값을 숫자, true, false 값을 문자열("11", "true", "false")로 변환
+-->
+
+<h3>eval()</h3>
+<script>
+    //eval("문자열로 표현된 자바스크립트 코드")
+    var a = "10 + 20" ;  
+    var myAlert = "alert(\"주의하세요\")" ;
+    document.write("a: " + a + "<br>") ;
+    document.write("myAlert: " + myAlert + "<br>") ;
+    
+    var b = eval(a) ;
+//  var myAlert2 = eval(myAlert) ;
+    document.write("b: " + b + "<br>") ;
+//  document.write("myAlert2: " + myAlert2 + "<br>") ; //undefined
+
+
+</script>
+
+<h3>isFinite()</h3>
+<!-- 
+    isFinite(인수값): 인수값이 "유한한 숫자값"(무한대의 반대)이면 true를 반환함
+ -->
+<script>
+    document.write(isFinite(123) + "<br>");     //true
+    document.write(isFinite(123e100) + "<br>"); //true
+    document.write(isFinite(0) + "<br>");       //true
+    document.write(isFinite(true) + "<br>");    //true
+    document.write(isFinite(false) + "<br>");   //true
+    document.write(isFinite(null) + "<br>");    //true //조심
+    document.write(isFinite("123") + "<br>");   //true //숫자로만 된 문자열을 숫자로 변환 후, 처리됨
+    document.write(isFinite("") + "<br>");      //true //조심: 값이 없으면 검증 못함
+    document.write(isFinite("홍길동") + "<br>"); //false
+    document.write(isFinite(undefined) + "<br>"); //false 
+    document.write(isFinite(NaN) + "<br>");       //false
+    document.write(isFinite(Infinity) + "<br>");  //false
+</script>
+
+<h3>isNaN()</h3>
+<!-- inNaN(인수값): 전달된 값이 "NaN 이면(숫자가 아니면)" true를 반환함 
+
+    인수로 전달된 값이 숫자가 아니면, 숫자로 강제 변환(true/false 값,숫자문자로만 된 문자열, )하여 검사합니다.
+
+-->
+<script>
+    document.write(isNaN(123) + "<br>");     //false
+    document.write(isNaN(123e100) + "<br>"); //false
+    document.write(isNaN(0) + "<br>");       //false
+    document.write(isNaN(true) + "<br>");    //false
+    document.write(isNaN(false) + "<br>");   //false
+    document.write(isNaN(null) + "<br>");    //false //조심
+    document.write(isNaN("123") + "<br>");   //false
+    document.write(isNaN("") + "<br>");      //false  //조심
+    document.write(isNaN("홍길동") + "<br>"); //true 
+    document.write(isNaN(undefined) + "<br>"); //true  //조심 
+    document.write(isNaN(NaN) + "<br>");       //true 
+    document.write(isNaN(Infinity) + "<br>");  //false
+
+    //이 함수는 숫자로의 강제 변환에 따라 예상치 못한 결과를 얻을 수 있으므로 
+    //ECMAScript 6부터는 Number.isNaN(인자값) 메소드의 사용을 권장하고 있습니다.
+    document.write("<hr>");
+</script>
+
+<h3>parseInt(), parseFloat() 함수</h3>
+<!-- 
+    parseInt("숫자로만 된 문자열") : 문자열 -> 정수로 변환
+    parseFloat("숫자로만 된 문자열") : 문자열 -> 실수로 변환
+ -->
+<script>
+    document.write((parseFloat("123") + 1) + "<br>" ) ;
+    console.log((parseFloat("123.000") + 1) + "<br>") ;
+    document.write((parseFloat("123.456") + 1) + "<br>") ;
+    document.write("<hr>") ;
+    document.write((parseInt("123") + 1) + "<br>" ) ;
+    document.write((parseInt("123.000") + 1) + "<br>") ;
+    document.write((parseInt("123.756") + 1) + "<br>") ;
+    document.write("<hr>") ;
+    document.write(parseFloat("  123  ") + "<br>"); //123
+    document.write(parseFloat("123 초콜릿") + "<br>"); //123
+    document.write(parseFloat("123초콜릿") + "<br>"); //123
+    document.write(parseFloat("초콜릿 123") +"<br>"); //NaN
+    document.write(parseFloat(true) + "<br>"); //NaN
+    document.write(parseFloat(false) + "<br>"); //NaN
+    document.write("<hr>") ;
+    document.write(parseInt("  123  ") + "<br>"); //123
+    document.write(parseInt("123 초콜릿") + "<br>"); //123
+    document.write(parseInt("123초콜릿") + "<br>"); //123
+    document.write(parseInt("초콜릿 123") +"<br>"); //NaN
+    document.write(parseInt(true) + "<br>"); //NaN
+    document.write(parseInt(false) + "<br>"); //NaN
+    document.write("<hr>") ;
+    document.write((Number("123") + 1) + "<br>" ) ;
+    document.write((Number("123.000") + 1) + "<br>") ;
+    document.write((Number("123.756") + 1) + "<br>") ;
+    document.write("<hr>") ;
+    document.write(Number("  123  ") + "<br>"); //123
+    document.write(Number("123 초콜릿") + "<br>"); //NaN
+    document.write(Number("123초콜릿") + "<br>"); //NaN
+    document.write(Number("초콜릿 123") +"<br>"); //NaN
+    document.write(Number(true) + "<br>"); //1
+    document.write(Number(false) + "<br>"); //0
+    document.write("<hr>") ;
+//input 요소를 통해 입력된 숫자를 처리하는 경우, 입력값이 없을 때 
+//Number(입력값) 결과는 0으로 표시됩니다.
+//parseInt(입력값), parseFloat(입력값) 결과는 NaN으로 표시됩니다.
+    document.write(Number("") + "<br>");    //0
+    document.write(parseInt("") + "<br>");  //NaN
+    document.write(parseFloat("") + "<br>");//NaN
+    document.write(Number(null) + "<br>");    //0
+    document.write(parseInt(null) + "<br>");  //NaN
+    document.write(parseFloat(null) + "<br>");//NaN
+    document.write("<hr>") ;
+</script>
+
+<h3>encodeURI() 함수와 encodeURIComponent 함수: 매우 중요</h3>
+<h3>decodeURI() 함수와 decodeURIComponent 함수: 매우 중요</h3>
+<script>
+    alert("이 메시지가<br>웹브라우저\r경고\b창에\n표시됩니다.");    
+    
+    var myURI1 = "https://velog.io/@ syoung125/개념공부-URI는-무엇이고-URL은-무엇일까" ;
+    var myURI2 = "http://google.com/+search,php?name=홍길동&city=서울" ;
+
+    //한글문자열 ==> %문자열로 변환
+    //encodeURI(): URI 문자열의 한글과 빈칸을 웹브라우저의 %문자로 변환
+    var encMyURI1 = encodeURI(myURI1) ;
+    var encMyURI2 = encodeURI(myURI2) ;
+
+    document.write("encMyURI1: " + encMyURI1 + "<br>");
+    document.write("encMyURI2: " + encMyURI2 + "<br><br>");
+
+    //encodeURIComponent(myURI2): URI 문자열의 한글과 빈칸 및 기호들을 모두 웹브라우저의 %문자로 변환
+    var encCompURI1 = encodeURIComponent(myURI1);
+    var encCompURI2 = encodeURIComponent(myURI2);
+
+    document.write("encCompURI1: " + encCompURI1 + "<br>");
+    document.write("encCompURI2: " + encCompURI2 + "<br><br>");
+
+    document.write("<hr>") ;
+    //%문자열을 ==> 원래의 문자열로 변환
+    var decMyURI1 = decodeURI(encMyURI1);
+    var decMyURI2 = decodeURI(encCompURI2);
+
+    document.write("decMyURI1: " + decMyURI1 + "<br>");
+    document.write("decMyURI2: " + decMyURI2 + "<br><br>");
+//    decMyURI1: https://velog.io/@ syoung125/개념공부-URI는-무엇이고-URL은-무엇일까
+//    decMyURI2: http%3A%2F%2Fgoogle.com%2F%2Bsearch%2Cphp%3Fname%3D홍길동%26city%3D서울
+
+    document.write("<hr>") ;
+    var decCompURI1 = decodeURIComponent(encMyURI1);
+    var decCompURI2 = decodeURIComponent(encCompURI2) ;
+
+    document.write("decCompURI1: " + decCompURI1 + "<br>");
+    document.write("decCompURI2: " + decCompURI2 + "<br><hr>");
+//  decMyURI1: https://velog.io/@ syoung125/개념공부-URI는-무엇이고-URL은-무엇일까
+//  decMyURI2: decCompURI2: http://google.com/+search,php?name=홍길동&city=서울
+
+    //escape()와 unescape() 더이상 사용되지 않음
+    var escMyURI1 = escape(myURI1) ;
+    var escMyURI2 = escape(myURI2) ;
+
+    document.write("escMyURI1: " + escMyURI1 + "<br>");
+    document.write("escMyURI2: " + escMyURI2 + "<br><br>");
+
+//  escMyURI1: https%3A//velog.io/@%20syoung125/%uAC1C%uB150%uACF5%uBD80-URI%uB294-%uBB34%uC5C7%uC774%uACE0-URL%uC740-%uBB34%uC5C7%uC77C%uAE4C
+//  escMyURI2: http%3A//google.com/+search%2Cphp%3Fname%3D%uD64D%uAE38%uB3D9%26city%3D%uC11C%uC6B8
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Number(), Boolean() 객체</title>
+</head>
+<body>
+    
+<h1>자바스크립트에서의 숫자처리 시 오차</h1>
+
+<script>
+var x = 999999999999999 ;  //15개의 9
+var y = 9999999999999999 ; //16개의 9
+var a = 0.1 , b = 0.2 , c = 0.3;
+document.write("a: " + a + "<br>") ;
+document.write("b: " + b + "<br>") ;
+document.write("c: " + c + "<br>") ;
+var z = a + b ;
+document.write("x" + x + "<br>") ;  //999999999999999
+document.write("y" + y + "<br>") ;  //10000000000000000 17개의 정수부로 처리됨
+document.write("z" + z + "<br>") ;  //0.30000000000000004
+
+
+//오차 없애는 코드
+var a1 = 0.1   , b1 = 0.2   ;
+a1 = 0.1 * 10 ;
+b1 = 0.2 * 10 ;
+document.write("a1: " + a1 + "<br>") ;
+document.write("b1: " + b1 + "<br>") ;
+var z1 = (a1 + b1) / 10 ;
+document.write("z1: " + z1 + "<br>") ;  //0.3
+
+a1 = 167234 ; 
+a2 = 0.01 ;
+
+z1 = a1 * a2 ; // 1672.34, 1672.3400000000001
+document.write("z1: " + z1 + "<br>") ;
+
+a1 = 1672.34 ; 
+a2 = 0.01 ;
+
+z1 = (a1 * (a2 * 100)); // 1672.34, 1672.3400000000001
+document.write("z1: " + z1 + "<br>") ;
+
+document.write("<hr>");
+</script>
+
+<h1>Number 객체</h1>
+
+<script>
+    var myNum = "12345.67"
+    document.write((myNum + 6) + "<br>"); //12345.676 , 문자열합치기가 발생
+    document.write((Number(myNum) + 6) + "<br>"); // Number 함수를 이용
+    var myNumer = new Number(myNum); // Number 객체
+    document.write(myNumer + 7 + "<hr>");
+
+    var myNumberStr = myNumer.toString(2);
+    document.write("myNumberStr: " + myNumberStr + "<br>"); //myNumberStr: 12345.67
+    document.write((typeof myNumer.toString()) + "<hr>"); //string
+    document.write(new Number(myNumberStr) + "<hr>");
+    document.write((new Number(myNumberStr)).toString(10) + "<hr>");
+
+    document.write(new Number(true) + "<br>"); // 1
+    document.write(new Number(false) + "<br>"); // 0
+
+    document.write(new Number("true") + "<br>"); // 1
+    document.write(new Number("false") + "<br>"); // 0
+
+</script>
+
+<h1>Boolean 객체</h1>
+
+<script>
+    var yourNum = 10
+    document.write((new Boolean(yourNum)) + "<br>"); //true
+    var yourNum = 1
+    document.write((new Boolean(yourNum)) + "<br>"); //true
+    var yourNum = 0
+    document.write((new Boolean(yourNum)) + "<br>"); //false
+    var yourNum = null
+    document.write((new Boolean(yourNum)) + "<br>"); //false
+    var yourNum = undefined
+    document.write((new Boolean(yourNum)) + "<br>"); //false
+    var yourNum = ""
+    document.write((new Boolean(yourNum)) + "<br>"); //false
+
+    if(yourNum){
+        document.write("값이 있어요 <br>"); //false   
+    }else{
+        document.write("값이 없어요 <br>"); //false  
+    }
+
+    document.write((new Boolean("true")) + "<br>"); //true
+    document.write(new Boolean("false")+ "<br>"); // true
+
+
+</script>
+    
+</body>
+</html>

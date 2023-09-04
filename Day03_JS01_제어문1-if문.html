@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>제어문1: if문</title>
+</head>
+<body>
+    <h1>if 문1: 단순 if문</h1>
+    <script>
+        var x = 30;
+        var y = 20;
+        if (x == y){
+            document.write("x와 y는 같습니다.<br>");
+        }
+
+        if (x < y){
+            document.write("x가 y 보다 작습니다. <br>");
+        }
+
+        if (x > y){
+            document.write("x가 y보다 큽니다.<hr>"); 
+        }
+
+        var z = null;
+        
+        if (z == ""){
+            document.write("z(z == \"\")에 값이 없습니다.<br>");
+        }
+
+        if (z == null){
+            document.write("z(z == null)에 값이 없습니다.<br>");
+        }
+        var k = "" ;
+
+        if (k == null){
+            document.write("k(k == null)에 값이 없습니다.<br>");
+        }
+
+        if (k == ""){
+            document.write("k(k == \"\")에 값이 없습니다.<br>");
+
+        }
+        var j ;
+
+        if (j == null) {
+            document.write("j(j == null)에 값이 없습니다.<br>");
+
+        }
+
+        if (j == ""){
+            document.write("j(j == \"\")에 값이 없습니다.<hr>");
+
+        }
+
+        if (j === null) {
+            document.write("j(j == null)에 값이 없습니다.<br>");
+
+        }
+
+        if (j === ""){
+            document.write("j(j == \"\")에 값이 없습니다.<hr>");
+
+        }
+
+
+        var myVar = "이순신";
+        if(myVar != null && myVar == "홍길동"){ //바람직한 조건문
+            // 실행문 ;
+        }
+
+        if(myVar == "홍길동" && myVar != null){ // 바람직하지 못한 조건문
+            // 실행문; 
+        }
+
+        // 자바 스크립트 프로토타입 객체 정의
+        function Dog(color, name, age) { // 개에 관한 생성자 함수를 작성함.
+
+            this.color = color;          // 색에 관한 프로퍼티
+            this.name = name;            // 이름에 관한 프로퍼티
+            this.age = age;              // 나이에 관한 프로퍼티
+        
+            this.breed = function() {      
+                return this.color + " " + this.age;
+
+                };
+            }
+
+        var myDog = new Dog("검은색", "뿡이", 8) ;
+        var yourDog = new Dog("흰색", "해피", 3) ;
+
+
+        document.write("나의 강아지 이름ㅣ " + myDog.name + "<br>");
+        document.write("당신의 강아지 이름ㅣ " + yourDog.name + "<br>");
+
+        document.write(myDog.breed() + "<br>");
+        document.write(yourDog.breed() + "<br>");
+
+        document.write("============================<br>");
+
+        //웹 브라우저 내장 Date() 함수와 Date() 객체
+
+        var myDate = Date() ;  //함수
+        var yourDate = new Date() ; //객체
+
+        console.log("myDate 값: " + (myDate)) ;
+        console.log("yourDate 값: " + (yourDate)) ;
+
+        console.log("myDate 타입: " + (typeof myDate)) ; //string
+        console.log("yourDate 타입: " + (typeof yourDate)) ; //object(Date()객체가 저장됨)
+
+        // console.log("myDate.getDate(): " + myDate.getDate()) ;
+        console.log("yourDate.getDay(): " + yourDate.getDay()) ;
+        console.log("yourDate.getFullYear(): " + yourDate.getFullYear()) ;
+        console.log("yourDate.getMonth(): " + yourDate.getMonth()) ;
+        console.log("yourDate.getDate(): " + yourDate.getDate()) ;
+        console.log("yourDate.getHours(): " + yourDate.getHours()) ;
+        console.log("yourDate.getMinutes(): " + yourDate.getMinutes()) ;
+        console.log("yourDate.getSeconds(): " + yourDate.getSeconds()) ;
+        console.log("yourDate.getMilliseconds(): " + yourDate.getMilliseconds()) ;
+        console.log("yourDate.getTime(): " + yourDate.getTime()) ;
+
+
+
+
+        //문제, 8/31일 시험일입니다.
+        //내일일자가 시험일인 경우, "집에가서 공부해야죠"를 alert 창에 표시합니다.
+        //시험일자가 아닌 경우, 아무것도 하지 않습니다.
+        
+        // 단순 if문을 이용해서
+        //프로그래밍 해보십시오.
+        //구현하는 과정에 대한 생각을 기술하십시오.
+        /*
+        날짜로 부터 월과 일을 추출해서 8/31 비교해서, 8/31과 동일하면,
+        집에가서 공부해야죠를 표시
+
+        1. 오늘 날짜 객체를 저장할 변수를 선언
+        2. 날짜로부터 읽어온 월이 8과 같고 일이 31과 같으면 "집에가서 공부해죠" 표시
+        */
+        
+        // 내가만든거 프로그래밍 해보십시오.
+        //1.date 변수를 만들고 현재날짜 요소를 date변수에 넣는다.
+        //2.현재날짜와 내일날짜와 비교하는 if문을 만들고 alert로 창에 표시한다.
+        
+        var myToday = new Date();
+        var myMonth = myToday.getMonth() + 1 ;
+        var myDay = myToday.getDate +3; 
+
+        if (myMonth == 8 && myDay == 31){
+            alert("집에가서 공부해여죠");
+        }
+
+        var yourToday = new Date();
+        if (yourToday.getMonth + 1 == 8 && yourToday.getDate == 31){
+            alert("집에가서 공부해야죠");
+        }
+        // var date2 = new Date();
+        // if(date2.getMonth + date2.getDate  == "30"){
+        //     alert("집에가서 공부해야죠.")
+        // }
+        // if(date2.getMonth + date2.getDate !== "30"){
+        //     alert("아무것도 하지 않는다.")
+        // }
+
+
+       // if(date2.getDate = 30 && date2.getDate !=30){
+            
+       //     alert("집에가서 공부해야죠")
+       // }
+        
+       // if(date2.getDate !=28 && date2.getDate == 28){
+            
+     //       document.write("집에가서 공부해야죠")
+      //  }
+
+    </script>
+
+    <h1>if 문2: if - else 문</h1>
+
+    <script>
+        x = 30; y = 20;
+
+        if (x == y){
+            document.write("x와 y는 같습니다.<br>");
+        }
+
+        if (x < y){
+            document.write("x가 y 보다 작습니다. <br>");
+        }
+
+        if (x > y){
+            document.write("x가 y보다 큽니다.<hr>"); 
+        }
+
+        if (x == y){ //x와 y가 같으면,
+            document.write("x와 y는 같습니다.<br>");
+        }else{ //x와 y가 같지 않으면,
+
+            if (x > y) { // x가 y보다 크면
+            document.write("x가 y보다 큽니다.<hr>");
+            }else{ //x가 y보다 크지 않으면
+                document.write("x가 y보다 작습니다.<br>");
+             
+            }
+        }
+    </script>
+
+    <h1>if 문3: if(조건식) - else if(조건식) - else if (조건식) 문</h1>
+
+    <script>
+        x = 30;
+        y = 20;
+        if (x == y){
+            document.write("x와 y는 같습니다.<br>");
+        }
+
+        else if (x < y){
+            document.write("x가 y 보다 작습니다. <br>");
+        }
+
+        else if (x > y){
+            document.write("x가 y보다 큽니다.<hr>"); 
+        }
+    </script>
+
+    <h1>if 문4: if(조건식) - else if(조건식) - else if (조건식) 문</h1>
+
+    <script>
+         x = 30; y = 20;
+        if (x == y){
+            document.write("x와 y는 같습니다.<br>");
+        }
+
+        else if (x < y){
+            document.write("x가 y 보다 작습니다. <br>");
+        }
+        else {
+            document.write("x가 y 보다 큽니다. <br>");
+        }
+
+    </script>
+
+    <!-- 문제 (요구사항)
+        0일 때: 일요일에 만나요
+        1일 때: 월요일에 만나요
+        2일 때: 화요일에 만나요
+        3일 때: 수요일에 만나요 
+        4일 때: 목요일에 만나요
+        5일 때: 금요일에 만나요
+        6일 때: 토요일에 만나요
+
+        입력하는 숫자는 0~9 까지 가능하도록
+        7,8,9를 입력하면, 매일 만나요!!!가 표시되도록
+     -->
+    <h1>문제: 윗부분 실습</h1>
+    <!-- <input type="number" id="inputNum" name="inputNum" maxlength="1">&nbsp;&nbsp; -->
+    <!--number type일 경우 maxlength 속성이 동작하지 않음 -->
+    <input type="text" id="inputNum" name="inputNum" maxlength="1">&nbsp;&nbsp;
+    <button type="button" onclick="showMeetingDay()">클릭해보세요...</button>
+    <hr>
+    <div id="result">만날 요일이 표시됩니다.</div>
+
+    <!-- 프로그래밍 절차 
+    1. 함수 형태로 구현
+    2. 입력값에서 숫자만 처리되게끔 구현고려
+        ==> 숫자 이외의 글자가 입력되면 잘못입력한 메시지를 표시
+    3. 입력된 값이 숫자인 경우, 버튼을 누를때 해당 값에 대응되는 결과가 표시되어야함.
+    4. 다음의 기능이 처리되는 함수를 작성
+        1)x 함수에 현재 날짜(Date 객체)를 getDay 메서드를 통해 일요일(0)부터 토요일(6) 
+          숫자값 0~6으로 가져와서 변수에 저장.
+        2) 입력값을 읽어와서 변수에 저장
+        3) 입력값과 요일의 값을 비교해서
+           ==> 입력값이 오늘의 요일에 해당되면, 오늘 만나요가 표시됩니다.
+           ==> 입력값이 오늘의 요일과 다르면,
+               입력 숫자에 해당하는 요일에 만나요가 표시됩니다.
+           ==> 입력숫자값이 7,8,9인 경우에는 매일 만나요가 표시
+           ==> 7,8,9 인 경우에는 매일 만나요가 표시
+           ==> 입력값이 0 ~ 9 까지 숫자가 아닌 경우, 0~9까지 숫자 한개를 입력하도록 alert 창에 표시 
+              ==> 다시 입력을 요청
+            4) id 속성이 result인 div에 문자열 출력  
+        -->
+
+    <!-- 프로그래밍 절차 
+        1. 최대 한자리의 숫자를 입력하는 button을 만든다.
+        2. 버튼이 눌러졌을때 입력된 값을 따온다.
+        3. 함수를 생성하여 id ="result"에 대체하여 입력할 변수(myDay)를 지정한다.
+        4. if else else 문을 이용하여 해당 변수의 각자 입력받은 숫자에 따른 값을 지정한다.
+        5. innerHTML을 이용하여 해당 변수를 result에 대체하여 넣는다.
+    -->
+
+
+    <script>
+        function showMeetingDay(){
+            var inputNum = document.getElementById("inputNum");
+            var inputValue = inputNum.value;
+            var result = document.getElementById("result");
+            var resultStr = "";
+
+            // var inputValue = document.getElementById("inputNum").value
+            alert(inputValue);
+
+            // var toDay = new Date();
+            // var weekDayNum = toDay.getDay();
+
+            var weekDayNum = (new Date()).getDay();
+            //alert(weekDayNum);
+
+
+            if (inputValue == ""){ // 아무것도 입력안하고 버튼을 누르면!
+                alert("0 ~ 9까지 숫자 한글자를 입력해주세요.");
+                //result.innerHTML = "0 ~ 9까지 숫자 한글자를 입력해주세요." ; 
+                return ; // 함수종료
+            
+            }else{
+                if(inputValue == weekDayNum){
+                    //alert("오늘만나요");
+                    //result.innerHTML = "오늘 만나요";
+                    resultStr = "오늘 만나요" ;
+
+                    }else{ //else if (inputValue == weekDayNum)
+                        if(inputValue == "0"){
+                            //alert("일요일에 만나요");
+                            resultStr = "일요일에 만나요" ;
+                        }else if (inputValue == "1"){
+                            //alert("월요일에 만나요");
+                            resultStr = "월요일에 만나요" ;
+                        }else if (inputValue == "2"){
+                            // alert("화요일에 만나요");
+                            resultStr = "화요일에 만나요" ;
+                        }else if (inputValue == "3"){
+                            //alert("수요일에 만나요");
+                            resultStr = "수요일에 만나요" ;
+                        }else if (inputValue == "4"){
+                            //alert("목요일에 만나요");
+                            resultStr = "목요일에 만나요" ;
+                        }else if (inputValue == "5"){
+                            //alert("금요일에 만나요");
+                            resultStr = "금요일에 만나요" ;
+                        }else if (inputValue == "6"){
+                            //alert("토요일에 만나요");
+                            resultStr = "토요일에 만나요" ;
+                        }else if(inputValue == "7" || inputValue == "8" || inputValue == "9"){
+                            //alert("매일 만나요");
+                            resultStr = "매일 만나요" ;
+                        } else { //,if, else if 전체 조건을 모두 만족하지 않는 모든 경우에는
+                            alert("0~9 사이의 숫자만 입력해주세요.");
+                            return ;
+                        }  
+
+
+                    }
+                    
+
+                }
+
+            result.innerHTML = resultStr ;
+        }
+    
+
+        
+
+    </script>
+
+
+</body>
+</html>

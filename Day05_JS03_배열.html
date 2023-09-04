@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>배열</title>
+</head>
+<body>
+<h1>배열이란</h1>
+<!--배열 개요 
+
+    수강생이 10명입니다
+10명의 점수를 변수를 통해서 평균을 구하고 싶습니다.
+배열을 사용하지 않은 경우, 점수값 10개를 사용하기 위해서
+아래처럼 변수 10개를 선언하고 값을 대입해야 함
+var score1 = 90 ;
+var score2 = 80 ;
+var score3 = 70 ;
+var score4 = 20 ;
+var score5 = 0 ;
+var score6 = 90 ;
+var score7 = 100 ;
+var score8 = 40 ;
+var score9 = 85 ;
+var score10 = 10 ;
+
+//위의 코드를 배열로 작성합니다.
+var score   = [90, 80, 70, 20, 0, "90", 100, 40, 85, 10] ;
+배열의         0    1   2   3   4   5    6     7   8   9   
+위치 인덱스
+
+배열에 저장된 값이 저장될 수 있는 공간의 갯수는 ?  score.length
+
+//배열을 사용하지 않고 평균 구하기
+var sum = 0
+sum = score1 + score2 + ... score10 ;
+avg = sum/10 ;
+
+//배열을 사용해서 평균 구하기
+var sum = 0 ;
+for(var i = 0 ; i < score.length ; i++) {
+	sum = sum + score[i] ;	
+}
+
+avg = sum/socre.length ;
+ -->
+
+<!--
+배열(array)이란?
+- 프로그램 언어에서 배열(array)은, 변수이름과 인덱스로 참조되는 
+  하나 이상의 값들의 집합으로 정의됩니다.
+
+- 배열에서의 각각의 값들의 위치를 가리키는 숫자를 위치 인덱스(index, 0 부터 시작 )라고 합니다.
+- 배열의 값과 그 값의 위치인덱스를 배열 요소(element)라고 합니다.
+  
+
+즉, 하나의 변수에 여러 개의 값을 대입시킬 때 사용하는 변수의 유형입니다.
+
+자바스크립트에서 배열의 특징은 다음과 같습니다.
+1. 배열 요소의 타입이 고정되어 있지 않으므로, 
+   같은 배열에 있는 배열 요소끼리의 타입이 서로 다를 수도 있습니다.
+   ==> 하나의 배열 유형 변수에 여러 타입의 값을 대입할 수 있습니다.
+
+2. 배열 요소의 인덱스가 연속적이지 않아도 되며, 
+   따라서 특정 배열 요소가 비어 있을 수도 있습니다.
+
+3. 자바스크립트에서 배열은 Array 객체로 다뤄집니다.
+-->
+<script>
+//배열 선언(실행 시에 배열이 생성됩니다.)
+// 배열 객체가 대입된 변수를 선언하는 3가지 문법
+//      1. var myArray1 = [10, true, "이순신"] ;
+//      2. var myArray2 = Array(20, true, "이순신") ;
+//      3. var myArray3 = new Array(20, true, "이순신") ;
+
+var myArray1 = [20, , "이순신"] ;
+var myArray2 = Array(20, null, "이순신");
+var myArray3 = new Array(20, undefined, "이순신"); 
+var myArray4 = new Array(30) ;
+var myArray5 = Array(30, null) ;
+
+document.write("myArray1: " + myArray1 + "<br>") ;
+document.write("myArray2: " + myArray2 + "<br>") ;
+document.write("myArray3: " + myArray3 + "<br>") ;
+document.write("myArray4: " + myArray4 + "<br>") ;
+document.write("myArray5: " + myArray5 + "<br>") ;
+
+//배열의 값이 저장될 수 있는 위치의 갯수를 알고 싶을 때
+//배열변수.length 속성을 이용합니다.
+document.write("myArray1.length: " + myArray1.length + "<br>") ;
+document.write("myArray2.length: " + myArray2.length + "<br>") ;
+document.write("myArray3.length: " + myArray3.length + "<br>") ;
+document.write("myArray4.length: " + myArray4.length + "<br>") ;
+
+document.write("myArray1 타입: " + (typeof myArray1) + "<br>") ;
+document.write("myArray2 타입: " + (typeof myArray2) + "<br>") ;
+document.write("myArray3 타입: " + (typeof myArray3) + "<br>") ;
+
+document.write("myArray1 타입: " + (Array.isArray(myArray1)) + "<br>") ;
+document.write("myArray2 타입: " + (Array.isArray(myArray2)) + "<br>") ;
+document.write("myArray3 타입: " + (Array.isArray(myArray3)) + "<br>") ;
+
+//배열의 하나의 값을 읽어오기: 배열변수이름[인덱스], 값 사용하기
+var yourAge = myArray1[0];
+var yourGender = myArray1[1];
+var yourName = myArray1[2] ;
+
+document.write("yourAge: " + yourAge + "<br>");
+document.write("yourGender: " + yourGender + "<br>");
+document.write("yourName: " + yourName + "<br>");
+
+//배열 객체가 대입된 변수를 배열변수라고 합니다.
+//배열의 공간의 개수는 배열변수이름.length : 배열의 길이를 반환
+
+//배열의 모든 값을 읽어오기: for문을 사용합니다.
+
+for( var i = 0; i < myArray1.length; i++){
+    var myValue = myArray1[i] ;
+    document.write("index: " + i + "번 위치: " + myValue + "<br>") ;
+}
+
+document.write("<hr>");
+
+//for-of 문을 사용하는 방법
+//배열변수 처럼 여러개의 값이 저장된 객체로부터
+//저장된 값들을 하나씩 읽어올 때 사용하면 좋습니다.
+
+for(var myValue of myArray1){ 
+    //myValue변수에는 배열의 첫번째 위치부터 순차적으로 하나의 값을 가져와서 저장합니다.
+    document.write(myValue + "<br>") ;
+
+}
+
+//for-in 문: 
+//배열로부터 요소의 index 를 가져옴, 값이 있는 경우에만 반복됩니다.
+for(var i in myArray1) {
+    document.write(i + "위치 <br>") ;
+    document.write(i + "위치 값: "+ myArray2[i] + "<br>") ;
+
+}
+
+//배열의 특정 위치에 값을 대입(수정)
+myArray1[1] = "남성" ;
+myArray1[2] = "여성" ;
+myArray1[10] = "베트맨" ;
+document.write(myArray1.length) ;
+for(var i in myArray1) {
+    document.write(i + "위치 값: <br>") ;
+    document.write(i + "위치 값: "+ myArray1[i] + "<br>") ;
+
+    document.write("<hr>");
+}
+    console.log(myArray1); // 개발자 도구로 기존 배열 확인
+    delete myArray1[0];
+    console.log(myArray1);
+    delete myArray1[10];
+    console.log(myArray1);
+    delete myArray1 ; //오류는 없지만, 무시됨.
+    console.log(myArray1);
+
+    var myValue = "홍길동";
+    console.log(myValue);
+    delete myValue ; // 변수 삭제나 값 삭제가 안됨.
+    console.log(myValue);
+
+    document.write("<hr>");
+
+    var myArray6 = new Array(2);
+    myArray6[0] = 20; 
+    myArray6[1] = "슈퍼맨"; 
+    myArray6[5] = "남성";
+    delete myArray6[5] ;
+    console.log(myArray6);
+    myArray6.push("슈퍼맨") ; //빈공간이 아니라 맨마지막에 추가해서 만든다. push 무조건 맨마지막에 값을 추가합니다.
+    console.log(myArray6);
+
+    //다차원 배열: 배열에 요소의 값으로 또 다른 배열이 대입된 형태입니다.
+    var customer1 = ["홍길동", 'hong@이메일' , '01012345678'];
+    var customer2 = ["이순신", 'lee@이메일' , '01023456789'];
+    var customer3 = ["슈퍼맨", 'super이메일' , '01112345678'];
+    var customer4 = ["베트맨", 'bed이메일' , '01212345678'];
+
+    var customers = [customer1, customer2, customer3, customer4]; 
+
+    console.log(customers.length);   // 4
+    console.log(customers[0].length); // 3
+    console.log(customers);
+
+    var custName = "";
+    custName = customers[0][0]; //홍길동
+    console.log(custName);
+    custName = customers[2][0]; //슈퍼맨
+    console.log(custName);
+
+    /*[문제] 테이블 형태로 위의 customers 배열의 값들을 웹 브라우저 화면에 표시하시오.
+    1. for 반복문으로 tr td을  테이블을 만들어주고
+    2. 테이블안에 customers 배열을 하나씩 넣어주는 반복문으로 만든다. 
+    3. 
+    */
+</script>
+
+<style>
+    table, th, td {border: 1px solid gray}
+    table {margin:auto;text-align: center; width: 600px}
+</style>
+
+<script>
+
+    var customer1 = ["홍길동", 'hong@이메일' , '01012345678'];
+    var customer2 = ["이순신", 'lee@이메일' , '01023456789'];
+    var customer3 = ["슈퍼맨", 'super이메일' , '01112345678'];
+    var customer4 = ["베트맨", 'bed이메일' , '01212345678'];
+
+    var customers = [customer1, customer2, customer3, customer4];
+    document.write("<table>") ;
+    document.write("<tr><th>이름</th><th>이메일</th> <th>전화번호</th></tr>");
+
+    for(var i = 0 ; i < customers.length ; i++ ){
+        document.write("<tr>") ;
+
+        for(var j = 0 ; j < customers[i].length ; j++) {
+            document.write("<td>" + customers[i][j] + "</td>");
+        }
+            document.write("</tr>") ;
+    }
+    document.write("</table>")
+
+</script>
+
+<h1>배열의 비어 있는 위치에 값을 대입하기</h1>
+
+<script>
+    var testArr = ['a','b', , ,'e'] ;
+   // document.write(testArr.length)
+    
+    for(var i = 0; i < testArr.length; i++){
+        ///document.write(testArr[3]);
+        // myVale = testArr[i];
+        // console.log(testArr[i]);
+        if(testArr[i] == undefined){
+            testArr[i] = "베트맨";
+            document.write(testArr[i]);
+            break;
+        }
+    }
+        console.log(testArr);
+
+//[참고]
+//string(즉,문자열)은 내부적으로 한글자마다 자동으로 위치 인덱스가 지정됩니다.
+    var yourName = "홍길동";
+    //              0 1 2
+    var regDate = '2023-08-31';
+    document.write(regDate[5]);
+    document.write(regDate[6]+"월 입니다.");
+    
+    // testArr[2] = "슈퍼맨"
+    // testArr[3] = "c"
+    // testArr[4] = "d"
+    // console.log(testArr[2]);
+    // document.write(testArr);
+
+</script>
+
+    
+</body>
+</html>

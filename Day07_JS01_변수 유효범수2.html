@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>변수 및 함수의 유효범위</title>
+</head>
+<body>
+    <h1>변수 유효범위</h1>
+    
+<script>
+    var myValue;
+    myValue2 = 10;
+    document.write(myValue + " : " + myValue2 + "<hr>");
+
+function globalNum(){
+    document.write("(1) 함수 내부에서 변수 num의 값은" + num + "입니다.<br>");
+    var num = 20;
+    document.write("(1) 함수 내부에서 변수 num의 값은" + num + "입니다.<hr>");
+
+}
+
+globalNum();
+</script>
+
+<h2>주의사항2: 전역변수와 로컬변수의 이름을 동일하게 사용하지 않는 것을 권장합니다.</h2>
+
+<script>
+    var myNum = 10;
+    document.write("(1) 함수 외부" + myNum + "<br>");
+
+function globalNum2(){
+//  document.write("(2) 함수 내부:" + myNum + "입니다.<br>"); //(1) undifiend
+//  전역변수의 값이 10이 아니라 undefined 가 표시됨
+
+    document.write("(2) 함수 내부:" + window.myNum + "입니다.<br>");
+//  myNum = 20; // 전역변수가 사용됨
+    var myNum = 20; 
+    document.write("(3) 함수 내부:" + myNum + "입니다.<br>");
+
+}
+
+globalNum2(); // window.globalNum2();
+document.write("(3) 함수 외부(함수 실행 후):" + myNum + "입니다.<br>");
+</script>
+
+<!-- <h2>주의사항3: 몰루?</h2>
+<script>
+    var myNum = 10;
+    document.write("(1) 함수 외부" + myNum + "<hr>");
+
+function globalNum3(){
+
+    document.write("(1) 함수 내부:" + window.myNum + "입니다.<br>");
+    var myNum = 20; 
+    document.write("(2) 함수 내부:" + myNum + "입니다.<br>");
+
+}
+
+globalNum3(); // window.globalNum2();
+
+</script> -->
+<hr>
+<h1>함수 매겨변수와 인수</h1>
+<hr>
+<script>
+    var x = 10, y = 20, z = 30; // 전역변수
+
+    function sub(a,b){ // a,b는 함수의 매개변수
+        return a - b ;
+
+    }
+    var result = sub(x,y); // x,y 늘 함수입장에서는 인수
+    document.write("sub 실행 결과: " + result + "<hr>");
+
+    //함수 선언 시에 매개변수에 기본값을 대입할 수 있습니다.
+    function addNum(a=0,b=0,c=0){
+        return a + b + c
+    }
+
+    result = addNum(x,y,z);
+    document.write("addNum 실행 결과: " + result + "<hr>");
+
+    result = addNum(x,y);
+    document.write("addNum 실행 결과: " + result + "<hr>");
+
+    result = addNum(x);
+    document.write("addNum 실행 결과: " + result + "<hr>");
+
+    result = addNum();
+    document.write("addNum 실행 결과: " + result + "<hr>");
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

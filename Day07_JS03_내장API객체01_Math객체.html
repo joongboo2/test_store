@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Math 객체</title>
+</head>
+<body>
+<h1>내장API객체01: Math객체</h1>
+<!-- 
+Math 객체는 수학에서 자주 사용하는 상수와 함수들을 
+미리 구현해 놓은 자바스크립트 표준 내장 객체입니다.
+
+Math 객체는 다른 전역 객체와는 달리 생성자(constructor)가 존재하지 않습니다.
+따라서 따로 인스턴스를 생성하지 않아도 Math 객체의 모든 메소드나 프로퍼티를 바로 사용할 수 있습니다.
+==> 사용할 때, var myMath = new Math(); 코드가 없이도, Math.메서드이름() 형식으로 쉽게 사용할 수 있습니다.
+
+1. Math.min()
+2. Math.max()
+3. Math.random()
+4. Math.round()
+5. Math.floor()
+6. Math.ceil()
+-->
+
+<h3>Math.min()메서드, Math.max()메서드</h3>
+<!-- 
+숫자를 인자로 받음, 인수의 개수에 제한이 없음.
+ -->
+<script>
+    document.write(Math.min() + "<br>");
+    document.write(Math.min(1, 10, -100, -10, 1000, 0) + "<br>") ;  //-100
+    document.write(Math.min(1, 10, -100.5, -10, 1000, 0) + "<br>") ; //-100.5
+    document.write(Math.min(1, 10, -100, -10, "-1000", 0) + "<br>") ; //-1000
+    document.write(Math.min(1, 10, -100, -10, "문자열", 0) + "<br>") ; //NaN
+
+    var myScores = [10, 20, 40.5, 5] ;
+    document.write(Math.min(myScores) + "<hr>") ;  //NaN
+
+    document.write(Math.max() + "<br>"); //-Infinity
+    document.write(Math.max(1, 10, -100, -10, 1000, 0) + "<br>") ;  //1000
+    document.write(Math.max(1, 10, -100.5, -10, 1000.67, 0) + "<br>") ; //1000.67
+    document.write(Math.max(1, 10, -100, -10, "1000.5", 0) + "<br>") ; //1000.5
+    document.write(Math.max(1, 10, -100, -10, "문자열", 0) + "<hr>") ; //NaN
+
+</script>
+
+<h3>Math.round(실수)메서드</h3>
+<!-- 
+인수로 전달받은 실수를 기준으로 더 가까운 정수를 반환합니다.
+    .5 일 때는 더 가까운 큰 정수를 반환합니다.
+ -->
+<script>
+    document.write(Math.round() + "<br>");  //NaN
+    document.write(Math.round(10.29) + "<br>"); //10
+    document.write(Math.round(10.5) + "<br>"); //11
+    document.write(Math.round(10) + "<br>");  //10
+    document.write(Math.round("-10.5") + "<br>");//-10
+    document.write(Math.round("-10.51") + "<hr>"); //-11
+</script>
+
+
+<h3>Math.floor(실수)메서드, Math.ceil(실수)메서드</h3>
+<!-- 
+Math.floor(실수)메서드: 인수로 전달받은 실수보다, 작은 정수 중 가장 큰 정수를 반환합니다.(소숫점 이하 버림)
+Math.ceil(실수)메서드: 인수로 전달받은 실수보다 큰 정수 중 가장 작은 정수를 반환합니다.(소숫점 이하 올림)
+-->
+<script>
+    document.write(Math.floor() + "<br>") ;  //NaN
+    document.write(Math.floor(10.29) + "<br>") ;  //10
+    document.write(Math.floor(10.5) + "<br>") ; //10
+    document.write(Math.floor(10) + "<br>") ; //10
+    document.write(Math.floor("-10.5") + "<br>") ; //-11
+    document.write(Math.floor("-10.51") + "<hr>") ; //-11
+    document.write(Math.ceil() + "<br>") ;  //NaN
+    document.write(Math.ceil(10.29) + "<br>") ;  //11
+    document.write(Math.ceil(10.5) + "<br>") ; //11
+    document.write(Math.ceil(10) + "<br>") ; //10
+    document.write(Math.ceil("-10.5") + "<br>") ; //-10
+    document.write(Math.ceil("-10.51") + "<br>") ; //-10
+    document.write(Math.ceil("홍길동") + "<br>") ; //NaN
+
+</script>
+
+
+<h3>Math.random()메서드</h3>
+<!-- 
+Math.random() 메소드는 0보다 크거나 같고 1보다 작은 무작위 실수 숫자 하나
+(random number)를 반환합니다.
+-->
+<script>
+    document.write(Math.random());  //0.5511094398908831
+
+/*    
+    //Math.random() 활용방법 하나를 소개합니다.
+    // 1 ~ 10 까지 숫자 중 랜덤으로 하나의 정수를 표시
+    //      0 <=       Math.random()     < 1
+    //1 ~ 10 까지이므로 10개의 숫자 
+    //     0 *10 <=       Math.random() *10          < 1 * 10
+                  ( 0.01x,0.1xx,0.2xx,..0.9xx )곱하기10
+           0    <=  0.1x,1.xx,2.xx,.....9.xx    < 10
+    //10 개의 숫자가 1부터 시작해서 10입니다. 1이 시작 수라는 것을 고려
+    //
+               0 + 1    <=  0.1x,1.xx,2.xx,.....9.xx    < 10 + 1
+                            
+                1       <=  1.1x,2.xx,3.xx     10.xx    < 11
+    //소수점 이하를 버림
+            Math.floor(1) <= Math.floor((Math.random() * 10) + 1) < Math.floor(11)
+                  1              1, 2, 3,...,10                            11
+
+            Math.floor((Math.random() * 연속된 특정 범위의 정수 갯수 ) + 시작 수)
+
+            랜덤 주사위 숫자 반환 코드: Math.floor((Math.random() * 6 + 1))
+            1 ~ 100 점수 중 75 점 이상 점수만 반환하는 코드를 작성해보세요
+            Math.floor((Math.random() * 26) + 75)
+*/
+
+</script>
+<h3>주사위 던지기</h3>
+<script>
+    var diceNum = Math.floor(Math.random() * 6 + 1) ;
+    document.write("주사위 수: " +  diceNum + "<br>") ;
+
+    //75점 이상 램던한 점수를 표시
+    var scoreNum = Math.floor(Math.random() * 26 + 75) ;
+    document.write("75점 이상 램덤 점수: " +  scoreNum + "<hr>") ;
+</script>
+</body>
+</html>

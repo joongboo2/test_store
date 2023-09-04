@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>for문연습</title>
+</head>
+<body>
+<h1>개발자도구의 콘솔창에 1~ 10 까지의 합계를 구하시오.</h1>
+<!-- 조건: for문을 이용하세요 -->
+<!-- 프로그래밍
+
+
+
+-->
+<script>
+    var mySum = 0 ;
+    for(var i = 1 ; i <=10 ; i++){
+
+        mySum += i ;
+
+
+    }
+
+    console.log(mySum) ;
+</script>
+
+<h1>개발자도구의 콘솔창에 1~ 10 까지의 수 중에서 짝수(추가, 3의배수 등등)만의 합계를 구하시오.</h1>
+<!-- 조건: for문을 이용하세요 -->
+<!-- 프로그래밍
+짝수는 2로 나누었을 때 나머지가 0,
+짝수는 2로 나누었을 때 나머지가 1,
+-->
+<script>
+mySum = 0 ;
+for(var i = 1 ; i <=10 ; i++){
+
+    if ((i % 2) == 0){  //2 -> 3 3의 배수
+        mySum += i ;
+    }
+
+}
+
+console.log(mySum) ;
+
+mySum = 0 ;
+for(var i = 0 ; i <=10 ; i = i + 2){
+    mySum += i ;
+}
+
+console.log(mySum) ;
+
+</script>
+
+<h1>구구단1 ~ 9 단을 다음처럼 표시하시오.</h1>
+<!--
+1 * 1 = 1    2 * 1 = 2    3 * 1 = 3
+1 * 2 = 2    2 * 2 = 4    3 * 2 = 3
+...
+
+4 * 1 = 1    5 * 1 = 2    6 * 1 = 3
+4 * 2 = 2    5 * 2 = 4    6 * 2 = 3
+...
+
+7 * 1 = 1    8 * 1 = 2    9 * 1 = 3
+7 * 2 = 2    8 * 2 = 4    9 * 2 = 3
+-->
+<!-- 구구단이 위와 같이 표시되게끔 for문을 이용해서 구현하시오. -->
+<script>
+//    document.write("============================<br>") ;
+    for(var k = 1; k <= 9 ; k = k + 3){
+            document.write(k + "단" + "&emsp;&emsp;&emsp;&emsp;&emsp;") ;
+            document.write((k+1) + "단" + "&emsp;&emsp;&emsp;&emsp;&emsp;") ;
+            document.write((k+2) + "단" + "<br>") ;
+//           document.write("============================<br>") ;
+       for(var m = 1 ; m <= 9 ; m++) {
+            document.write(k + " * " + m + " = " + k*m + "&emsp;&emsp;") ;
+            document.write((k+1) + " * " + m + " = " + (k+1)*m + "&emsp;&emsp;") ;
+            document.write((k+2) + " * " + m + " = " + (k+2)*m + "<br>") ;
+       }
+//       document.write("============================<br>") ;
+   
+    }
+   
+   </script>
+
+<h1>3개의 셀로 구성된 테이블의 한 행이 5번 반복해서 표시되는 for 문을 작성해 봅니다.</h1>
+<!-- 각 셀에는 다음처럼 값이 표시됩니다.  -->
+1  2  3 
+4  5  6
+7  8  9
+10 11 12
+13 14 15
+<!-- 
+프로그래밍
+반복되는 것을 찾으세요
+
+ -->
+<style>
+    table, td {border: 1px solid lightgrey}
+    table {width: 50%;text-align: center;}
+    td {width: 10%}
+</style>
+
+<table>
+    <tr>
+        <td>값</td>
+        <td>값</td>
+        <td>값</td>
+    </tr>
+    <tr>
+        <td>값</td>
+        <td>값</td>
+        <td>값</td>
+    </tr>
+    <tr>
+        <td>값</td>
+        <td>값</td>
+        <td>값</td>
+    </tr>
+    <tr>
+        <td>값</td>
+        <td>값</td>
+        <td>값</td>
+    </tr>
+    <tr>
+        <td>값</td>
+        <td>값</td>
+        <td>값</td>
+    </tr>
+</table>
+<hr>
+<script>
+document.write("<table>") ;
+var myCell1 = 1 ;
+for(var myRow = 1 ; myRow <= 5 ; myRow++ ){
+    document.write("<tr>") ;
+    for(var myCell = myCell1 ; myCell <= (myCell1+2) ; myCell++) {
+        document.write("<td>") ;
+        document.write(myCell) ;
+        document.write("</td>") ;
+    }
+    myCell1 += 3 ;
+    document.write("</tr>") ;
+
+}
+document.write("</table>")
+</script>
+
+
+
+
+
+
+
+
+<script>
+ document.write("============================<br>") ;
+ for(var k = 1; k <= 9 ; k=k+3){
+	    document.write(k + "단" + "&emsp;&emsp;&emsp;&emsp;&emsp;") ;
+	    document.write((k + 1) + "단" + "&emsp;&emsp;&emsp;&emsp;&emsp;") ;
+	    document.write((k + 2) + "단" + "<br>") ;
+	    document.write("============================<br>") ;
+	for(var m = 1 ; m <= 9 ; m++) {
+	        document.write(k + " * " + m + " = " + k*m + "&emsp;&emsp;") ;
+	        document.write((k + 1) + " * " + m + " = " + (k + 1)*k + "&emsp;&emsp;") ;
+	        document.write((k + 2) + " * " + m + " = " + (k + 2)*k + "<br>") ;
+	}
+    document.write("============================<br>") ;
+
+    }
+
+</script>
+
+</body>
+</html>

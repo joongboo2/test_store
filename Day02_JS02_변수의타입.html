@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>변수의타입</title>
+</head>
+<body>
+<h1>자바스크립트 변수의 타입</h1>
+<!--
+선언된 변수에 대입된 값(데이터)에 따라서 자동으로 변수의 타입은 지정됩니다.
+
+두 개의 문자열을 합치고 싶으면, "문자열1" + "문자열2" 코드를 사용합니다.
+-->
+<p id="result">결과가 표시됩니다.</p>
+
+<script>
+    var myP = document.getElementById("result") ;
+
+    myP.innerHTML = 1 + 1 + "<br>" ;     //2
+    console.log( 1 + 1) ;
+    myP.innerHTML += "1" + "1" + "<br>"; //"11"
+    myP.innerHTML += 1 + "1" + "<br>";  //"11"
+    myP.innerHTML += 1 + 2 + 4 + "1" + 4 + 5 + 8 + "<br>";  //"71458"
+
+    myP.innerHTML += 1 * false + "<br>";
+    console.log(typeof (1 * false)) ; //true/false 값에 숫자와 산술연산을 하면 
+                                     //false: 0, true: 1 로 고려해서 산술연산됩니다.
+
+    myP.innerHTML += "1" + true + "<br>";
+    console.log(typeof ("1" + true)) ;
+
+    myP.innerHTML = "<hr>" ;
+    
+    var a = "홍길동" ;
+    var b = "슈퍼맨" ;
+    myP.innerHTML += (a == b) ;
+
+//자바스크립트의 타입
+  //string, number, boolean,
+  //undefined: 값이 대입되지 않은 변수에 지정되는 타입(값이 없다)
+  //           변수는 선언됨
+  //null 키워드: 값이 없다는 것을 의미하는 키워드이고, null의 타입은 object
+  //Infinity: 타입은 number, 의미는 무한대로 큰 값을 의미 (0 이 아닌 숫자를 0으로 나눌 때)
+  //NaN(Not a Number): 타입은 number, 의미는 0 ~9 아닌 문자로 구성된 값은 내부적으로 NaN으로 처리됩니다.
+
+    var myValue ;
+    console.log(myValue + " : " + typeof myValue) ;
+
+    myValue = 10 ;
+    console.log(myValue + " : " + typeof myValue) ;
+
+    myValue = null ;
+    console.log(myValue + " : " + typeof myValue) ;
+
+    myValue = undefined ;
+    console.log(myValue + " : " + typeof myValue) ;
+
+    myValue = "" ;  //type: string, 문자열의 길이가 0 임
+    console.log(myValue + " : " + typeof myValue) ;
+
+    //앞에 선언된 동일한 이름의 변수를 뒤에 다시 선언하면,
+    //뒤의 변수 선언문은 무시됩니다.
+    var myValue ; //무시되어 선언되지 않음
+    console.log(myValue + " : " + typeof myValue) ; //string
+
+    //
+    myValue = undefined ; //의도적으로 초기화 되지 않은 상태를 만듦
+    console.log(myValue + " : " + typeof myValue) ; //undefined:undefined
+
+    var yourValue = null ; //값이 없는 상태를 대입함
+    var hisValue = "" ;
+    console.log("myValue == yourValue : " + (myValue == yourValue));
+    console.log("myValue == hisValue : " + (myValue == hisValue));
+    console.log("yourValue == hisValue : " + (yourValue == hisValue));
+
+    // == 연산자 앞 뒤의 값을 비교해서 같으면, true
+    // != 연산자 앞 뒤의 값을 비교해서 다르면, true
+    console.log("myValue != yourValue : " + (myValue != yourValue));
+    console.log("myValue != hisValue : " + (myValue != hisValue));
+    console.log("yourValue != hisValue : " + (yourValue != hisValue));
+    //값이 없는 상태의 경우, undefined와 null은 동일하게 취급됩니다.
+
+
+
+    //자바스크립트 객체 정의 방법1
+    var myDog = {name: "해피", age: 3, kind: "진돗개"} ;
+    var yourDog = {name: "쫑", age: 1, kind: "푸들"} ;
+    
+    console.log( "나의 강아지 이름은 " + myDog.name 
+               + "이고, 나이는 " + myDog.age + "입니다") ;
+    console.log( "당신의 강아지 이름은 " + yourDog.name 
+    + "이고, 나이는 " + yourDog.age + "입니다") ;
+
+    //자바스크립트 객체 정의 방법2
+    function Dog(name, age, kind) {
+        this.name = name ;   
+        this.age = age ;
+        this.kind = kind ;
+    }
+
+    var myDog1 = new  Dog ("해피", 13, "진돗개") ;
+    var yourDog1 = new Dog("쫑", 11, "푸들") ;
+
+
+    console.log( "나의 강아지 이름은 " + myDog1.name 
+               + "이고, 나이는 " + myDog1.age + "입니다") ;
+    console.log( "당신의 강아지 이름은 " + yourDog1.name 
+    + "이고, 나이는 " + yourDog1.age + "입니다") ;
+
+    //+= 기능
+    // var i = 0 ;
+    // i = i + 5 ;
+    // i += 5 ;
+
+
+
+
+
+    
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>변수의 유효범위</title>
+</head>
+<body>
+<h1>변수의 유효범위</h1>
+<!-- 
+1. {   } 실행 블록 내에서 선언된 변수는 그 {  } 실행블록 내에서만 사용됩니다.
+       - if 문의 if 절, else 절, else if 절, switch 문의 {  }, 
+         while 문, for 문의 {} 실행블록에서 선언된 변수는 그 문장의 {} 실행블록 안에서만 사용됩니다.
+
+       - function 의 {} 실행블록에 선언된 변수는 해당 함수의 { } 실행블록 안에서만 
+         사용됩니다. ==> 로컬변수
+
+2. 로컬변수(local variable)와 전역변수(public variable)
+   로컬변수: function 내에서 var 식별자 ; 실행문으로 선언된 변수 
+            -  함수 내의 if, while, else, for 문의 실행블록에 선언된 변수는 
+               "해당 문장의 블록에 대한 로컬변수"라고 합니다.
+
+    전역변수: function { } 바깥에서 var 식별자; 실행문으로 선언된 변수로서  
+             <script></script> 사이에 선언된 변수를 의미합니다.
+
+ -->
+
+<h2>if 문의 { } 안에서 선언된 변수를 else {}에서 사용할 수 있을까요?</h2>
+
+<button type="button" id="btn1" onclick="varScopeTest1();">변수의 적용범위 테스트</button>
+
+<script>
+//     var myValue = 2 ;     //전역변수
+// //     var myName = null ;   //전역변수
+// //     document.write("myName: " + myName + "<br>") ;
+
+//     myAge = 90 ;
+//     처리방법
+//     var myAge ;
+//     myAge = 90 ;
+
+//     if (myValue == 3) {
+//         var myName = null ;
+//         myName = "홍길동" ;
+//         document.write("myName: " + myName + "<br>") ;
+//     } else {
+//         myName ="슈퍼맨" ;
+
+//         var myName ;
+//         myName = "슈퍼맨" ;
+//         document.write("myName: " + myName + "<br>") ;
+//     }
+
+//     document.write("myName: " + myName + "<br>") ;
+//     document.write("<hr>") ;
+</script>
+
+<script>
+//var myValue = 2 ;        //전역변수
+var myValue = 3 ;        //전역변수
+
+function varScopeTest1(){
+    
+    myName = null ;   //로컬변수
+    document.write("myName: " + myName + "<br>") ;
+
+    var myAge = 90 ;
+
+    if (myValue == 2) {
+        myName = "홍길동" ;
+        var myTel = "전화번호1" ;
+        document.write("if 블록 안 myName: " + myName + "<br>") ;
+        //document.write("if 블록 안 myTel: " + myTel + "<br>") ;
+    } else {
+        myName ="슈퍼맨" ;
+
+        myTel2 = "전화번호 else 블록" ;
+
+        document.write("else블록 안 myTel: " + myTel + "<br>") ;  //undefined
+        document.write("else블록 안 myName: " + myName + "<br>") ;
+        document.write("else블록 안 myTel: " + myTel2 + "<br>") ;  //undefined
+    }
+
+    document.write("if 문 외부 myName: " + myName + "<br>") ;
+    document.write("if 문 외부 myTel: " + myTel + "<br>") ;
+    document.write("else블록 안 myTel: " + myTel2 + "<br>") ;  //undefined
+    
+    document.write("<hr>") ;
+}
+
+document.write("함수 외부 myName: " + myName + "<br>") ;
+document.write("함수 외부 myTel: " + myTel + "<br>") ;
+document.write("함수 외부 myTel: " + myTel2 + "<br>") ;
+
+
+</script>
+    
+</body>
+</html>

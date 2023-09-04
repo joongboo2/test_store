@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>가위,바위,보 게임</title>
+</head>
+
+<body>
+<h1>컴퓨터와의 가위바위보 게임!!!</h1>
+
+<h3>아래의 입력란에 가위, 바위, 보 중 하나를 입력하고 버튼을 클릭하세요.</h3>
+<hr>
+<input type="text" id="rpsInput" placeholder="가위,바위,보 중 하나를 입력하세요..." size="50">&nbsp;
+<button type="button" onclick="rpsPlay()">컴퓨터와의 승부</button>
+<hr>
+<h2>게임결과</h2>
+<div id="rpsResult"></div>
+
+<!-- <script>
+    function rpsPlay(){
+    //var userRPSStr = document.getElementById("rpsInput").value ;
+    var userRPSStr = rpsInput.value ; //undefined
+    alert(userRPSStr);    
+}
+var rpsInput = "3" ;
+
+</script> -->
+
+<script>
+function rpsPlay(){
+
+    var userRpsStr = document.getElementById("rpsInput").value ;
+    var computerRps = Math.floor(Math.random() * 3 + 1); // 3:가위, 2:바위, 1:보
+    console.log("computerRps" + computerRps);
+
+    var userRps = (userRpsStr == "가위")
+                ? 1
+                : (userRpsStr == "바위")
+                ? 2
+                : (userRpsStr == "보")
+                ? 3
+                : 4 ;
+    if(userRps == 4)
+        alert("가위, 바위, 보 중 하나를 입력하시오.") ; 
+        return ;
+    }
+    var resultRps = userRps + computerRps ;
+
+    var result = document.getElementById("rpsResult") ;
+
+    if (resultRps == 4) {
+        result.innerHTML = "비겼네요";
+    } else if(resultRps == 2 || resultRps == 5){
+        result.innerHTML = "당신이 이겼습니다.";
+    } else {
+        result.innerHTML = "컴퓨터가 이겼습니다.";
+    }
+
+
+
+</script>
+    
+</body>
+</html>
