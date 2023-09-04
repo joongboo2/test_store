@@ -7,126 +7,114 @@
 <body>
     <h1>개발자가 정의하는 "자바스크립트 객체"</h1>
 
-<!--
-객체(Object)란? 컴퓨터의 메모리에서 구성되는 사물 ==> 메모리에서 로딩 된 실행파일을 말합니다.
-        //자바스크립트 객체는 
-            //필요한 경우에 프로퍼티(property, 속성)와 필요한 경우에 메서드(method, 동작)가 포함됩니다.
-            //프로퍼티는 객체를 특정하게 규정하는 값이 대입된 변수
-            //메서드는 객체가 수행할 수 있는 기능이 구현된 함수를 가리킵니다.
-
-    //자바스크립트에서 사용자 정의 객체란(즉, 개발자의 코드로 정의되는 자바스크립트 객체),
-    //이름(name)과 값(value)으로 구성된 프로퍼티(property)의 집합입니다.
+    <!--
+    객체(Object)란? 컴퓨터의 메모리에서 구성되는 사물 ==> 필요에 의해서 메모리에 로딩 된 파일을 말합니다.
+            //자바스크립트 객체는 
+                //필요한 경우에 프로퍼티(property, 속성)와 필요한 경우에 메서드(method, 동작)가 포함됩니다.
+                //프로퍼티는 객체를 특정하게 규정하는 값이 대입된 변수
+                //메서드는 객체가 수행할 수 있는 기능이 구현된 함수를 가리킵니다.
     
-    //프로퍼티의 값으로 함수가 올 수도 있는데, 이러한 프로퍼티를 메소드(method)라고 합니다.
-    //사용자 정의 JS-객체안에는 변수역할을 하는 프로퍼티와 함수역할을 하는 메서드를 정의합니다.
+        //자바스크립트에서 사용자 정의 JS객체란(즉, 개발자의 코드로 정의되는 자바스크립트 객체),
+        //이름(name)과 값(value)으로 구성된 프로퍼티(property)의 집합입니다.
+        
+        //프로퍼티의 값으로 함수가 올 수도 있는데, 이러한 프로퍼티를 메소드(method)라고 합니다.
+        //사용자 정의 JS-객체안에는 변수역할을 하는 프로퍼티와 함수역할을 하는 메서드를 정의합니다.
+    
+        자바스크립트 객체를 정의하는 방법
+        1. 리터널 형식으로 자바스크립트 객체를 생성
+        2. 프로토타입 형식으로 자바스크립트 객체 생성
 
-    자바스크립트 객체를 정의하는 방법
-    1. 리터널 방식으로 자바스크립트 객체를 생성
-    2. 프로토타입 형식으로 자바스클비트 객체 생성 
--->
-
-    <script>
-        // 자바스클비트 객체를 생성할 생성자 함수(Prototype)를 정의함
-    function Dog(name, color, age, sound){
-        this.name = name ;      
-        this.color = color ;
-        this.age = age ;
-        this.sound = sound ;
-        this.bread = function(){
-            alert(this.sound + "소리로 짓습니다.");
-            return this.name + "가 밥을 먹습니다." ;
-
-        }
-        // 위의 코드에서 this 키워드의 의미는 이 소스로 메모리에 구서오딘 객체 자신을 의미합니다.
-        // this.name = name; 실행문에서 this.name의 name은 객체의 속성(preoperty)으로정의됩니다.
-        //             ----  --> 매개변수를 통해서 this.anme 속성에 대입되는 인수입니다.
-        // bread 속성에는 값이 아니라 익명 함수가 대입됩니다. ==> 메서드라고 합니다.
+    -->
+<script>
+//자바스크립트 객체를 생성할 생성자 함수(Prototype)를 정의함
+function Dog(name, color, age, sound) {
+    this.name = name ;      
+    this.color = color ;
+    this.age = age ;
+    this.sound = sound ;
+    this.breed = function () {
+        alert(this.sound + "소리로 짓습니다.") ;
+        return this.name + "가 밥을 먹습니다." ;
     }
 
-    //위의 정의를 이용해서 객체를 생성해 봅시다.
-    var myDog = new Dog("마루", "흰색" , 1, "멍멍") ;
-    var yourDog = new Dog("뿡이", "갈색", 8 , "왈왈") ; 
+    //위의 코드에서 this 키워드의 의미는 이 소스로 메모리에 구성된 객체 자신을 의미합니다.
+    //this.name = name ; 실행문에서 this.name의 name은 객체의 속성(property)으로 정의됩니다. 
+    //            ---- --> 매개변수를 통해서 this.name 속성에 대입되는 인수입니다.
+    //breed 속성에는 값이 아니라 익명 함수가 대입됩니다. ==> 메서드라고 합니다.
+}
 
-    document.write("당신 강아지 이름:" + yourDog.name + "<br>") ;
-    document.write("당신 강아지 털색:" + yourDog.color + "<br>") ;
-    document.write("당신 강아지 나이:" + yourDog.age + "<br>") ;
-    document.write("당신 강아지 울음소리:" + yourDog.sound + "<hr>"); 
+//위의 정의를 이용해서 객체를 생성해 봅시다
+var myDog = new Dog("마루", "흰색", 1, "멍멍") ;
+var yourDog = new Dog("뿡이", "갈색", 8, "왈왈") ;
 
-    document.write("나의 강아지 이름:" + myDog.name + "<br>") ;
-    document.write("나의 강아지 털색:" + myDog.color + "<br>") ;
-    document.write("나의 강아지 나이:" + myDog.age + "<br>") ;
-    document.write("나의 강아지 울음소리:" + myDog.sound + "<hr>"); 
+var custNames = ["홍길동", "슈퍼맨", "베트맨", "이순신"]
 
-    var yourBread = yourDog.bread() ;
-    document.write(yourBread + "<hr>") ; 
+document.write("당신 강아지 이름:" + yourDog.name + "<br>") ;
+document.write("당신 강아지 털색:" + yourDog.color + "<br>") ;
+document.write("당신 강아지 나이:" + yourDog.age + "<br>") ;
+document.write("당신 강아지 울음소리:" + yourDog.sound + "<hr>") ;
 
-    var myBread = myDog.bread() ;
-    document.write(myBread + "<hr>") ; 
+document.write("나의 강아지 이름:" + myDog.name + "<br>") ;
+document.write("나의 강아지 털색:" + myDog.color + "<br>") ;
+document.write("나의 강아지 나이:" + myDog.age + "<br>") ;
+document.write("나의 강아지 울음소리:" + myDog.sound + "<hr>") ;
+
+var yourBreed = yourDog.breed() ;
+document.write(yourBreed + "<hr>") ;
+
+var myBreed = myDog.breed() ;
+document.write(myBreed + "<hr>") ;
 
 
 
-    // 리터널 형식으로 자바스크립트 객체를 생성
-    var myCat = { name: "나비", 
-                 family: "코리안 숏 헤어",
-                 age: "2", 
-                 weight: "0.3",
-                 mew: function(){
-                    alert("냐옹");
+//리터널 형식으로 자바스크립트 객체를 생성
+var myCat = {   name: "나비", 
+                family: "코리안 숏 헤어", 
+                age: 2, 
+                weigth: 0.3, 
+                mew: function() {
+                    alert("냐옹") ;
                 }
-            };
+            } ;
+var yourCat = {     name: "치즈", 
+                    family: "코리안 숏 헤어", 
+                    age: 5, 
+                    weigth: 0.7, 
+                    mew: function() {
+                        alert("니야옹") ;
+                    }
+} ;
 
-    var yourCat = { name: "치즈", 
-            family: "코리안 숏 헤어",
-            age: "5", 
-            weight: "0.7", 
-            mew: function(){
-            alert("니냐옹");
-        }
-    };
+document.write("당신 고양이 이름:" + yourCat.name + "<br>") ;
+document.write("당신 고양이 털색:" + yourCat.family + "<br>") ;
+document.write("당신 고양이 나이:" + yourCat.age + "<br>") ;
+document.write("당신 고양이 울음소리:" + yourCat.weigth + "<hr>") ;
 
-    document.write("당신 고양이 이름:" + yourCat.name + "<br>") ;
-    document.write("당신 고양이 털색:" + yourCat.family + "<br>") ;
-    document.write("당신 고양이 나이:" + yourCat.age + "<br>") ;
-    document.write("당신 고양이 울음소리:" + yourCat.sound + "<hr>"); 
+document.write("나의 고양이 이름:" + myCat.name + "<br>") ;
+document.write("나의 고양이 털색:" + myCat.family + "<br>") ;
+document.write("나의 고양이 나이:" + myCat.age + "<br>") ;
+document.write("나의 고양이 울음소리:" + myCat.weigth + "<hr>") ;
 
-    document.write("나의 고양이 이름:" + myCat.name + "<br>") ;
-    document.write("나의 고양이 털색:" + myCat.family + "<br>") ;
-    document.write("나의 고양이 나이:" + myCat.age + "<br>") ;
-    document.write("나의 고양이 울음소리:" + myCat.sound + "<hr>"); 
-    
 
-    function Dog2(color, name, age) {
+function Dog2(color, name, age) {
 			this.color = color;
 			this.name = name;
 			this.age = age;
 		}
+var hisDog = new Dog("흰색", "마루", 1);
+var herDog = hisDog;							// hisDog 객체를 변수 herDog에 대입함.
+document.write((hisDog == herDog) + "<br>");	// true
+document.write((hisDog === herDog) + "<br>");	// true
 
-		var hisDog = new Dog2("흰색", "마루", 1);		// 모든 프로퍼티의 값이 모두 같은 객체를 생성함.
-		var herDog = hisDog;							// hisDog 객체를 변수 herDog에 대입함.
-		document.write((hisDog == herDog) + "<br>");	// true
-		document.write((hisDog === herDog) + "<br>");	// true
+hisDog.weigth = 3 ;
+document.write("hisDog.weigth: " + hisDog.weigth + "<br>");	
+document.write("herDog.weigth: " + herDog.weigth + "<hr>");	
+herDog.weigth = 5 ;
+document.write("hisDog.weigth: " + hisDog.weigth + "<br>");	
+document.write("herDog.weigth: " + herDog.weigth + "<hr>");	
 
-        hisDog.weight = 3;
-        document.write("hisDog.weight :" + hisDog.weight + "<br>");
-        document.write("herDog.weight :"  + herDog.weight + "<hr>");
 
-        herDog.weight = 5 ;
-        document.write("hisDog.weight :" + hisDog.weight + "<br>");
-        document.write("herDog.weight :"  + herDog.weight + "<hr>");
-
-        var str ="문자열일"
-        var len = str.length;
-        document.write(len + typeof(len) + "<br>");
-        document.write(len + 2);
-        document.write("<br>");
-
-        var myDate = Date(); //string
-        var myDate2 = new Date() ; //object
-
-    </script>
+</script>
     
-
-
-
 </body>
 </html>

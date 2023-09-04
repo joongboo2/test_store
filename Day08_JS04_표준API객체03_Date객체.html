@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title>내장 API 객체:  3. Date 객체</title>
+    
+</head>
+<body>
+<h1>특정 날짜 처리: Date 객체</h1>
+<!-- 
+"특정 날짜 또는 날짜시간"을 문자열로 처리할 때는 아래의 형식을 문자열이 준수해야 함
+년월일 구분자로 / 를 사용할 수 없습니다.
+
+YYYY-MM-DDTHH:MM:SS // T는 UTC(협정세계시)를 나타내는 문자로 시간까지 표현할 때에는 반드시 사용해야 함.
+YYYY-MM-DD
+YYYY-MM
+YYYY
+ -->
+<script>
+/*
+    1. new Date(): 현재 날짜시간을 가진 Date객체를 생성
+    2. new Date("날짜를 나타내는 문자열"): 특정 날짜시간을 가진 Date 객체를 생성, 문자열
+    3. new Date(년, 월, 일, 시, 분, 초, 밀리초): 특정 날짜시간을 가진 Date 객체를 생성, 정수를 이용
+*/
+
+    //과거 날짜 생성: 날짜 문자열 ==> 날짜로 변환
+    var myDatetime = new Date("1977-12-14T13:30:00"); // 날짜와 시간까지 표현함.
+    var myDate1 = new Date("1977-12-14");          // 시간이 생략되면 자동으로 09:00:00으로 설정됨.
+    var myDate2 = new Date("1977-12");             // 일이 생략되면 자동으로 1일로 설정됨.시간이 자동으로 09:00:00으로 설정됨
+    var myDate3 = new Date("1977");                // 월이 생략되면 자동으로 1월로 설정됨.시간이 자동으로 09:00:00으로 설정됨
+    document.write(myDatetime + "<br>") ;
+    document.write(myDate1 + "<br>") ;
+    document.write(myDate2 + "<br>") ;
+    document.write(myDate3 + "<br>") ;
+
+    document.write("<hr>");
+
+    //과거 날짜 생성: 날짜 시간 요소를 각각 숫자로 사용
+    var myDatetime1 = new Date() ; //현재 날짜 시간
+    var myDatetime2 = new Date(2023, 7, 28, 8, 30, 20, 456) ;  //월: 0 ~ 11 숫자
+    var myDatetime3 = new Date(2023, 7, 28, 8, 30, 20) ;
+    var myDatetime4 = new Date(2023, 7, 28, 8, 30) ;
+    var myDatetime5 = new Date(2023, 7, 28) ;
+
+    document.write(myDatetime1 + "<br>") ;
+    document.write(myDatetime2 + "<br>") ;
+    document.write(myDatetime3 + "<br>") ;
+    document.write(myDatetime4 + "<br>") ;
+    document.write(myDatetime5 + "<br>") ;
+
+    document.write("<hr>");
+
+    var myDatetime7 = Date(2023, 2, 28) ;
+    document.write(myDatetime7 + "<br>") ;
+
+    document.write("<hr>");
+    document.write("<hr>");
+
+    var date1 = new Date();   // Date 객체 생성
+    var date2 = Date() ;
+    document.write("new Date(): " + date1 + "<br>");
+    document.write("Date(): " + date2 + "<br>");
+
+    document.write("date1.getFullYear :" + date1.getFullYear() + "<br>");
+ // document.write("date2.getFullYear " + date2.getFullYear() + "<br>");
+
+
+
+    //alert(typeof date1 ) ;  //object  //<-- .getFullYear() 같은 추가적인 메서드를 사용할 수 있습니다.
+    //alert(typeof date2 ) ;  //string
+    
+    document.write("<hr>") ;
+    
+    //특정날짜시간의 Date 객체를 생성
+    var date3 = new Date("2022/08/22 15:23:00");
+    var date4 = new Date("2022-08-22 15:23:00");
+    document.write(date3 + "<br>");  //Mon Aug 22 2022 15:23:00 GMT+0900 (한국 표준시)
+    document.write(date4 + "<br>");  //Mon Aug 22 2022 15:23:00 GMT+0900 (한국 표준시)
+
+    var date5 = new Date("2022/08/22");
+    var date6 = new Date("2022-08-22"); //시간이 00시가 아니라 09로 표시됩니다. 
+    document.write(date5 + "<br>");  //Mon Aug 22 2022 00:00:00 GMT+0900 (한국 표준시)
+    document.write(date6 + "<br>");  //Mon Aug 22 2022 09:00:00 GMT+0900 (한국 표준시)
+
+    var date7 = new Date("2022 08 22");
+    var date8 = new Date("2022.08.22");
+    document.write(date7 + "<br>");  //Mon Aug 22 2022 00:00:00 GMT+0900 (한국 표준시)
+    document.write(date8 + "<br>");  //Mon Aug 22 2022 00:00:00 GMT+0900 (한국 표준시)
+
+    var date9 = new Date(2022,8,19,14,31,20); //****
+    var date10 = new Date(22, 8, 19);  //세기연도가 1925년으로 표시됩니다.
+    var date11 = new Date(2022,8,19);
+    document.write(date9 + "<br>"); //Thu Sep 22 2022 14:31:20 GMT+0900 (한국 표준시)
+    document.write(date10 + "<br>"); //Fri Sep 22 1950 00:00:00 GMT+0900 (한국 표준시)
+    document.write(date11 + "<br>"); //Thu Sep 22 2022 00:00:00 GMT+0900 (한국 표준시)
+
+    document.write("<hr>") ;
+    //주의 사항: Date() 함수만 사용한 경우(new 없이 사용): 무조건 현재 날짜시간이 표시됨
+    //          ==> 과거 특정 날짜시간을 지정할 수 없습니다.
+    var date12 = Date("December 14, 1977 14:30:20") ; //Thu Mar 02 2023 18:35:11 GMT+0900 (한국 표준시)
+    document.write(date12 + "<br>");  //Thu Mar 02 2023 18:35:11 GMT+0900 (한국 표준시)
+
+</script>
+
+</body>
+</html>
+    
+</body>
+</html>
